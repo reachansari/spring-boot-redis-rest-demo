@@ -37,6 +37,9 @@ The connection to Redis is established through a `Jedis client`. A `JedisConnect
 
 Notice that a `StringRedisSerializer` has been used for keys, otherwise the marshalling would be done through the default serializer (as happens with stored values since we are not specifying any serializer).
 
+Run local **Redis server** in Docker:
+	docker pull redis
+	docker run -d --name redis -p 6379:6379 redis
 ## Libraries used
 - Spring Boot
 - Spring Configuration
@@ -44,9 +47,6 @@ Notice that a `StringRedisSerializer` has been used for keys, otherwise the mars
 - Redis
 - Development Tools
 
-Run local **Redis server** in Docker:
-	docker pull redis
-	docker run -d --name redis -p 6379:6379 redis
 	
 ## Compilation Command
 - `mvn clean install` - Plain maven clean and install
