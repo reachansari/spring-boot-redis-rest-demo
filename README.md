@@ -13,10 +13,10 @@ The class `EmployeeController.java` contains all endpoint.
 | method            | resource          | description                                                                                   |
 |:------------------|:------------------|:----------------------------------------------------------------------------------------------|
 | `GET`			| `/employees`		| get the collection of employees -> 200(OK)														|
-| `GET`			| `/employees/:id`	| get a employee by Id -> 200(OK), 400(wrong id format), 404(no employee with such id)					|
+| `GET`			| `/employees/{id}`	| get a employee by Id -> 200(OK), 400(wrong id format), 404(no employee with such id)					|
 | `POST`			| `/employees`		| creates a employee in the DB -> 201(created)														|
-| `PUT`			| `/employees/:id`	| updates a employee in the DB -> 204(updated), 400(wrong id format), 404(no employee with such id)		|
-| `DELETE`		| `/employees/:id`	| deletes a employee from the DB -> 204(deleted), 400(wrong id format), 404(no employee with such id)	|
+| `PUT`			| `/employees/{id}`	| updates a employee in the DB -> 204(updated), 400(wrong id format), 404(no employee with such id)		|
+| `DELETE`		| `/employees/{id}`	| deletes a employee from the DB -> 204(deleted), 400(wrong id format), 404(no employee with such id)	|
 
 ## Exception Handling
 An Spring Boot advice `EmployeeException.java` has been created for handling exceptions and convert them into desired responses.
@@ -30,7 +30,7 @@ An Spring Boot advice `EmployeeException.java` has been created for handling exc
 ## CRUD service
 The CRUD is done in `EmployeeService.java` through a **RedisTemplate<String, employee>**, created as a @bean in `SpringRedisApplication.java`. A RedisTemplate should be created for each entity that will be persisted to Redis.
 
-Redis keys for stored employees will follow the format `employees:<uuid of employee>`. That way, the whole collection of employees can be fetched through the pattern `employees:*`.  The code is dead simple and very self-descriptive.
+Redis keys for stored employees will follow the format `employees:<uuid of employee>`. So that the whole collection of employees can be fetched through the pattern `employees:*`.
 
 ## Redis connection
 The connection to Redis is established through a `Jedis client`. A `JedisConnectionFactory` is defined in `SpringRedisApplication.java`, taking Redis hostname and password from application properties.
